@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [form, setForm] = useState({
@@ -17,10 +18,10 @@ const Register = () => {
   const handleRegister = async () => {
     try {
       await axios.post("http://localhost:8000/auth/register", form);
-      alert("Registration successful. Please log in.");
+      toast.success("Registration successful. Please log in.");
       navigate("/");
     } catch {
-      alert("Registration failed");
+      toast.error("Registration failed. Please try again.");
     }
   };
 
@@ -72,6 +73,12 @@ const Register = () => {
           className="bg-green-600 text-white w-full p-2 rounded"
         >
           Register
+        </button>
+        <button
+          onClick={() => navigate("/")}
+          className="mt-4 text-sm text-blue-600 hover:underline block mx-auto"
+        >
+          Back to Login
         </button>
       </div>
     </div>

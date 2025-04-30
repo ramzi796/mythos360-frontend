@@ -19,6 +19,7 @@ const AnimatedRoutes = () => {
   }, []);
 
   return (
+    
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Login />} />
