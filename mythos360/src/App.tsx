@@ -10,6 +10,7 @@ import { checkTokenExpiryAndLogout } from "./utils/tokenExpiryCheck";
 import Register from "./pages/Register";
 import RoleProtectedRoute from "./components/RoleProtectedRoute";
 import Unauthorized from "./pages/Unauthorized";
+import AdminUserManagement from "./pages/AdminUserManagement";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -55,6 +56,14 @@ const AnimatedRoutes = () => {
           element={
             <RoleProtectedRoute allowedRoles={["employee", "manager", "admin"]}>
               <EmployeeDashboard />
+            </RoleProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/users"
+          element={
+            <RoleProtectedRoute allowedRoles={["admin"]}>
+              <AdminUserManagement />
             </RoleProtectedRoute>
           }
         />
